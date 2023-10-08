@@ -42,7 +42,7 @@ void setup() {
   pinMode(button, INPUT);
 
   //setup serial monitor
-  Serial.begin(115200);
+  //Serial.begin(115200);
   
   #if defined(IR_SEND_PIN)
       IrSender.begin(); // Start with IR_SEND_PIN as send pin and enable feedback LED at default feedback LED pin
@@ -53,7 +53,7 @@ void setup() {
   #  endif
   #else
       IrSender.begin(3, ENABLE_LED_FEEDBACK, USE_DEFAULT_FEEDBACK_LED_PIN); // Specify send pin and enable feedback LED at default feedback LED pin
-      Serial.println(F("Send IR signals at pin 3"));
+      //Serial.println(F("Send IR signals at pin 3"));
   #endif 
 }
 
@@ -116,54 +116,250 @@ void SendIRSignal()
     analogWrite (Led_Blue, 0);
     analogWrite (Led_Green, 0);
 
-    //send TV codes
-    IrSender.sendPanasonic(0x8, 0x12, 2);
-    IrSender.sendPanasonic(0x8, 0x3D, 2);
-    IrSender.sendSamsung(0x707, 0x2, 2);
-    IrSender.sendSamsung(0xD0D, 0xB, 2);
-    IrSender.sendSamsung(0x1818, 0xB, 2);
-    IrSender.sendSamsung(0x808, 0xB, 2);
-    IrSender.sendSamsung(0xE0E, 0x13, 2);
-    IrSender.sendSamsung(0x808, 0x1D, 2);
-    IrSender.sendSamsung(0x1717, 0x2, 2);
-    IrSender.sendSamsung(0xE0E, 0xC, 2);
-    IrSender.sendSamsung(0xE0E, 0x14, 2);
-    IrSender.sendDenon(0x1, 0x16, 2);
-    IrSender.sendSharp(0x1, 0xE9, 2);
-    IrSender.sendNEC(0xBD00, 0x1, 2);
+    //commands copied from flipperzero
     IrSender.sendSony(0x1, 0x15, 2, 12);
-    IrSender.sendPanasonic(0x8, 0x12, 2);
-    IrSender.sendPanasonic(0x8, 0x3D, 2);
-    IrSender.sendNEC(0x38, 0x1C, 2);
-    IrSender.sendNEC(0x50, 0x17, 2);
-    IrSender.sendNEC(0x40, 0x12, 2);
-    IrSender.sendNEC(0x4, 0x8, 2);
-    IrSender.sendNEC(0x8, 0x12, 2);
-    IrSender.sendNEC(0xBF00, 0xD, 2);
-    IrSender.sendNEC(0xFE, 0x4, 2);
-    IrSender.sendNEC(0x20, 0xB, 2);
-    IrSender.sendNEC(0xA, 0x12, 2);
-    IrSender.sendNEC(0x4040, 0xA, 2);
-    IrSender.sendNEC(0xDF00, 0x1C, 2);
-    IrSender.sendNEC(0xCB04, 0x4A, 2);
-    IrSender.sendNEC(0x7F00, 0x15, 2);
-    IrSender.sendNEC(0x1, 0x0, 2);
-    IrSender.sendNEC(0x2E01, 0x0, 2);
-    IrSender.sendNEC(0x80, 0x82, 2);
-    IrSender.sendNEC(0x8, 0xC, 2);
-    IrSender.sendNEC(0x40, 0x17, 2);
-    IrSender.sendNEC(0x80, 0x17, 2);
-    IrSender.sendNEC(0xA0, 0x1C, 2);
-    IrSender.sendNEC(0x8, 0x5, 2);
-    IrSender.sendNEC(0x3F80, 0x44, 2);
-    IrSender.sendRC5(0x0, 0xC, 2);
-    IrSender.sendRC6(0x0, 0xC, 2);
-    IrSender.sendRC5(0x1, 0xC, 2);
-    IrSender.sendPulseDistanceWidth(38, 9000, 4550, 500, 1800, 500, 600, 0x3B44BDC611C, 42, PROTOCOL_IS_LSB_FIRST, 100, 2);
-    IrSender.sendPulseDistanceWidth(38, 4050, 4050, 500, 2000, 500, 1000, 0xAB054F, 24, PROTOCOL_IS_LSB_FIRST, 100, 2);
-    IrSender.sendPulseDistanceWidth(38, 9000, 4550, 500, 1800, 500, 600, 0x3B44BDC611C, 42, PROTOCOL_IS_LSB_FIRST, 100, 2);
-    IrSender.sendPulseDistanceWidth(38, 4050, 4050, 500, 2000, 500, 1000, 0xAB054F, 24, PROTOCOL_IS_LSB_FIRST, 100, 2);
-    IrSender.sendPulseDistanceWidth(38, 9000, 4500, 550, 1700, 550, 550, 0x38C73DCC119, 42, PROTOCOL_IS_LSB_FIRST, 100, 2);
-    //IrSender.sendJVC(0x3, 0x17, 3);
-    //IrSender.sendJVC(0x3, 0x21, 2);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendSony(0x1, 0x15, 2, 12);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x15, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendSony(0x1, 0x15, 2, 12);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x15, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x40, 0xB, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendPanasonic(0x8, 0x3D, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x4, 0x40, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7F00, 0x15, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xDF00, 0x1C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x1, 0x3, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x3, 0x1D, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x19, 0x18, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xA0BA, 0x4C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xEDAD, 0xB5, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x1, 0x40, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xB7A0, 0xE9, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x10, 0x15, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x10, 0x15, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x10, 0x15, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x8, 0x5, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0xDF00, 0x1C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0xE0E, 0xC, 2);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x707, 0x2, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x50, 0x17, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x4931, 0x63, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xAA, 0x1C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x38, 0x1C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x7A83, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x53, 0x17, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x1818, 0xC0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendOnkyo(0x1818, 0xC0, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x38, 0x10, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xAA, 0xC5, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x4, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x18, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x71, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x6F80, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x48, 0x0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x7B80, 0x13, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x7E80, 0x18, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x50, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x7580, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x5780, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0xB0B, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xAA, 0x1B, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x4685, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x505, 0x2, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x808, 0xF, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x0, 0x1, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x707, 0xE6, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x71, 0x4A, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x60, 0x3, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x60, 0x0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x42, 0x1, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendNEC(0x42, 0x1, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0xAD50, 0x0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0xAD50, 0x2, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x50, 0x3F, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x606, 0xF, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x8, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x808, 0xB, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x5583, 0xC2, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x0, 0x51, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0xBD00, 0x1, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x0, 0xF, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x1616, 0xF, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x1, 0x1, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x6880, 0x49, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendOnkyo(0x286, 0x49, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7F00, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7201, 0x1E, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x586, 0xF, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7D02, 0x46, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xE084, 0x20, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x6E, 0x2, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7C85, 0x80, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xC7EA, 0x17, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x707, 0xE0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x707, 0x98, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendSamsung(0x707, 0x98, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x6D, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x6D, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x6D, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x1, 0x10, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x8, 0xD7, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendRC5(0x1, 0xC, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x4664, 0x5D, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x20, 0x52, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xBF00, 0xD, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendRC5(0x3, 0xC, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xBF00, 0x0, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x1717, 0x14, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendRC5(0x0, 0xC, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xA0, 0x5F, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x38, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println(" IrSender.sendNEC(0x38, 0x12, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2E, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2E, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2E, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2F, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2F, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSony(0x1, 0x2F, 2, 12);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xC7EA, 0x97, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x4040, 0xA, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x0, 0x1A, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x28, 0xB, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x80, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xBD00, 0x1, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendDenon(0x1, 0x16, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendDenon(0x1, 0x16, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSharp(0x1, 0xE9, 2);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x40, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendSamsung(0x3E3E, 0xC, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xF404, 0x8, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x40, 0x12, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendNEC(0x40, 0x12, 1);");
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x7F00, 0x1E, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0xA0, 0x1C, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    IrSender.sendNEC(0x80, 0x82, 1);
+    //delay(50);                // waits 50 milliseconds to let the buffer clear
+    //Serial.println("IrSender.sendNEC(0x80, 0x82, 1);");
+    IrSender.sendPulseDistanceWidth(38, 1150, 500, 700, 1450, 700, 500, 0x356, 10, PROTOCOL_IS_LSB_FIRST, 150, 6);
+    IrSender.sendPulseDistanceWidth(38, 4000, 4050, 450, 2050, 450, 1050, 0xAB054F, 24, PROTOCOL_IS_LSB_FIRST, 150, 1);
+    //Serial.println("DONE");
+
   }
