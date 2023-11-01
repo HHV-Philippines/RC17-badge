@@ -23,7 +23,7 @@ The HHV-RC17 Electronic Badge is a unique and educational device designed for le
 
 - **WiFi Deauther:** The device can perform WiFi deauthentication attacks. 
 
-- **Captive Portal:** Learn about captive portal technology and its applications. 
+- **Evil-Twin:** Learn about evil-twin attacks and its applications. 
 
 
 ## Disclaimer
@@ -64,6 +64,9 @@ Please use this badge responsibly and in a manner that respects the rights and p
 
 
 Changelog
+v2.0
+- added Wifi Deauthentication and Evil-Twin attacks
+
 v1.0.1
 - changed RGB color to red when sending codes
 - replaced existing TV Power codes with codes from schiaparelli of Lockpick Village's flipperzero
